@@ -14,18 +14,18 @@ namespace MoodAnalyserTest
             //Act
             string mood = analyser.AnalyseMood();
             //Assert
-            Assert.AreEqual("Sad", mood);
+            Assert.AreEqual("HAPPY", mood);
         }
 
         [TestMethod]
         public void HappyMoodCheck()
         {
             //Arrange
-            MoodAnalyserApp analyser = new MoodAnalyserApp("I am in a Happy mood");
+            MoodAnalyserApp analyser = new MoodAnalyserApp("I am in a sad mood");
             //Act
             string mood = analyser.AnalyseMood();
             //Assert
-            Assert.AreEqual("Happy", mood);
+            Assert.AreEqual("SAD", mood);
         }
     }
 }

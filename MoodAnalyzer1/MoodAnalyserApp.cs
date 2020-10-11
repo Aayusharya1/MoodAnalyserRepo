@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace MoodAnalyser
 {
@@ -15,12 +16,17 @@ namespace MoodAnalyser
         public string AnalyseMood()
         {
             string mood;
-            if (message == "I am in a Happy mood")
-                mood = "Happy";
-            else if (message == "I am in a Sad mood")
-                mood = "Sad";
-            else
-                mood = null;
+            string regexStr = "^(.*[ ])*[s][a][d]([ ].*)*";
+            Regex regexExp = new Regex(regexStr);
+
+            try
+            {
+                mood = regexExp.IsMatch(this.message) ? "SAD" : "HAPPY";
+            }
+            catch (Exception e)
+            {
+                return "HAPPY";
+            }
             return mood;
         }
     }
